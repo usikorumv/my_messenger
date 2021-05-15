@@ -140,8 +140,3 @@ class LoginInputField extends StatelessWidget {
   }
 }
 
-class SignUpPopUp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
