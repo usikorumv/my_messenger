@@ -9,81 +9,94 @@ class LoginPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Spacer(flex: 1),
-          Text(
-            'Login',
-            style: GoogleFonts.rubik(
-              textStyle: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: deffaultPadding * 3.5, vertical: deffaultPadding),
-            child: Text(
-              'Please confirm your account and your password.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.rubik(
-                textStyle: TextStyle(
-                  color: lightGreyColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: deffaultPadding),
-          Stack(
-            alignment: Alignment.bottomCenter,
+      body:  body: Container(
+        height: size.height,
+        width: size.width,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: size.height * 0.57,
-                decoration: BoxDecoration(
-                  color: darkGreyColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(100),
-                    topRight: Radius.circular(100),
+              SizedBox(height: size.height * 0.24),
+              Text(
+                'Login',
+                style: GoogleFonts.rubik(
+                  textStyle: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: deffaultPadding * 2.5),
-                child: Column(
-                  children: [
-                    LoginInputField(
-                      icon: Icon(Icons.person),
-                      textOfField: 'Your Account',
-                      isPasswordField: false,
+                padding: EdgeInsets.symmetric(
+                    horizontal: kDeffaultPadding * 3.5,
+                    vertical: kDeffaultPadding),
+                child: Text(
+                  'Please confirm your account and your password.',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.rubik(
+                    textStyle: TextStyle(
+                      color: kLightGreyColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
-                    SizedBox(height: deffaultPadding),
-                    LoginInputField(
-                      icon: Icon(Icons.lock),
-                      textOfField: 'Your Password',
-                      isPasswordField: true,
-                    ),
-                    SizedBox(height: deffaultPadding * 1.7),
-                    TextButton(
-                      onPressed: () => Navigator.push(
-                          // Переход на другую страницу
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage())),
-                      child: Image.asset(
-                        'assets/LoginButton.png',
-                        height: size.height / 8,
+                  ),
+                ),
+              ),
+              SizedBox(height: kDeffaultPadding),
+              Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    height: size.height * 0.57,
+                    decoration: BoxDecoration(
+                      color: kDarkGreyColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(100),
+                        topRight: Radius.circular(100),
                       ),
                     ),
-                    SizedBox(height: deffaultPadding * 2.5)
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: kDeffaultPadding * 2.5),
+                    child: Column(
+                      children: [
+                        LoginInputField(
+                          icon: Icon(Icons.person),
+                          textOfField: 'Your Account',
+                          myController: accountFieldController,
+                          isPasswordField: false,
+                        ),
+                        SizedBox(height: kDeffaultPadding),
+                        LoginInputField(
+                          icon: Icon(Icons.lock),
+                          textOfField: 'Your Password',
+                          myController: passwordFieldController,
+                          isPasswordField: true,
+                        ),
+                        SizedBox(height: kDeffaultPadding * 1.7),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                // Переход на другую страницу
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                          child: Image.asset(
+                            'assets/LoginButton.png',
+                            height: size.height / 8,
+                          ),
+                        ),
+                        SizedBox(height: kDeffaultPadding * 2.5)
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
